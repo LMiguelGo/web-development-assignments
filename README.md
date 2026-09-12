@@ -9,6 +9,7 @@ Repositorio para el almacenamiento, versionado y entrega de talleres, laboratori
 | Fecha | Asignación / Tema | Descripción | Ruta del Código |
 | :---: | :--- | :--- | :---: |
 | **18/08/2026** | Replica de la portada de Mercado Libre | Maquetación con HTML puro y comparación de resultados con Gemini y Claude | [`2026-08-18_plain-html/`](./2026-08-18_plain-html) |
+| **18/08/2026** | Replica de la portada de Mercado Libre | Maquetación con HTML y CSS (No JavaScript) y comparación de resultados con ChatGPT y v0 | [`2026-08-31_css-html/`](./2026-08-31_css-html) |
 
 ---
 

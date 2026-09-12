@@ -1,0 +1,13 @@
+{
+  "name": "mercado-libre-clone",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "serve . -l 3000 --no-clipboard",
+    "build": "echo 'Static site: nothing to build'",
+    "start": "serve . -l 3000 --no-clipboard"
+  },
+  "devDependencies": {
+    "serve": "^14.2.6"
+  }
+}

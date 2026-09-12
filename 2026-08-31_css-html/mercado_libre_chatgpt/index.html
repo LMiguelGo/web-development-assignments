@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Una portada de ecommerce inspirada en Mercado Libre, creada solo con HTML y CSS." />
+    <title>Mercado Libre — Compra y vende</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root { --yellow:#ffe600; --ink:#333; --muted:#666; --line:#e7e7e7; --blue:#3483fa; --page:#ebebeb; }
+      * { box-sizing:border-box; }
+      body { margin:0; background:var(--page); color:var(--ink); font-family:Montserrat,Arial,sans-serif; font-size:14px; }
+      a { color:inherit; text-decoration:none; }
+      .wrap { width:min(1200px,calc(100% - 36px)); margin:auto; }
+      .top { background:var(--yellow); min-height:100px; }
+      .head { display:grid; grid-template-columns:220px minmax(280px, 1fr) 210px; grid-template-rows:52px 40px; gap:0 24px; align-items:center; }
+      .brand { grid-column:1; grid-row:1; display:flex; align-items:center; gap:6px; font-size:17px; font-weight:700; letter-spacing:-.8px; }
+      .brand-mark { width:54px; height:34px; border:2px solid #222; border-radius:50%; position:relative; transform:rotate(-7deg); }
+      .brand-mark:before, .brand-mark:after { content:""; position:absolute; top:12px; width:27px; height:9px; border-bottom:2px solid #222; }
+      .brand-mark:before { left:3px; transform:rotate(15deg); } .brand-mark:after { right:3px; transform:rotate(-15deg); }
+      .search { grid-column:2; grid-row:1; position:relative; height:40px; }
+      .search input { border:0; border-radius:2px; width:100%; height:100%; padding:0 48px 0 16px; color:#777; font:400 13px Montserrat; box-shadow:0 1px 2px #00000018; outline:0; }
+      .search button { position:absolute; right:0; top:7px; width:43px; height:26px; border:0; background:transparent; border-left:1px solid #eee; font-size:18px; color:#999; cursor:pointer; }
+      .shipping { grid-column:3; grid-row:1; font-size:11px; text-align:center; display:flex; gap:8px; align-items:center; justify-content:center; white-space:nowrap; }
+      .shipping b { border:1.5px solid #333; border-radius:50%; width:21px; height:21px; display:grid; place-items:center; font-size:12px; }
+      .location { grid-column:1; grid-row:2; display:flex; align-items:center; gap:7px; font-size:12px; color:#555; }
+      .pin { width:15px; height:15px; border:1.5px solid #333; border-radius:50% 50% 50% 0; transform:rotate(-45deg); } .pin:after{ content:""; width:4px;height:4px;background:#333;border-radius:50%;display:block;margin:4px; }
+      .nav { grid-column:2 / 4; grid-row:2; display:flex; align-items:center; justify-content:space-between; color:#444; font-size:13px; min-width:0; }
+      .nav-left, .nav-right { display:flex; gap:20px; align-items:center; } .nav .drop:after { content:"⌄"; margin-left:5px; font-size:13px; }
+      .hero { background:linear-gradient(105deg,#df7904,#ffb122 49%,#ffd36b); height:340px; overflow:hidden; position:relative; }
+      .hero:after { content:""; position:absolute; width:630px; height:630px; right:-70px; bottom:-370px; border:24px solid #f9d75a; border-radius:50%; opacity:.75; }
+      .hero-inner { height:100%; display:flex; align-items:center; position:relative; z-index:1; }
+      .hero-copy { width:55%; color:#202020; } .eyebrow { font-size:14px; letter-spacing:1.4px; font-weight:700; text-transform:uppercase; }
+      h1 { font-size:46px; line-height:1.05; letter-spacing:-2px; margin:10px 0 16px; max-width:490px; }
+      .hero-copy p { font-size:17px; margin:0 0 25px; }.cta { background:var(--blue); color:#fff; display:inline-block; padding:13px 24px; border-radius:5px; font-weight:600; }
+      .deal-card { position:absolute; right:68px; width:325px; height:222px; background:#fff; border-radius:11px; transform:rotate(-4deg); box-shadow:0 16px 26px #7d470a55; padding:20px; display:flex; flex-direction:column; justify-content:space-between; }
+      .deal-card:before { content:""; position:absolute; background:#f3f3f3; width:130px; height:130px; border-radius:50%; right:25px; top:48px; }.deal-card .product { position:absolute; right:45px; top:48px; font-size:70px; filter:drop-shadow(4px 6px 5px #999); }.deal-card small { font-weight:700; color:#777; }.deal-card strong { display:block; font-size:28px; line-height:1; }.deal-card span { color:#00a650; font-weight:600; font-size:12px; }
+      .benefits { background:#fff; border-radius:4px; height:92px; margin-top:-35px; position:relative; z-index:3; display:grid; grid-template-columns:repeat(3,1fr); align-items:center; box-shadow:0 1px 2px #00000010; }
+      .benefit { padding:0 28px; border-right:1px solid var(--line); display:flex; align-items:center; gap:15px; min-height:44px; }.benefit:last-child { border:0; }.benefit i { font-style:normal; color:#00a650; font-size:28px; }.benefit b { display:block; font-size:13px; margin-bottom:4px; }.benefit span { color:#777; font-size:11px; }
+      .section { padding:42px 0 12px; }.section-title { display:flex; gap:16px; align-items:baseline; margin:0 0 18px; }.section-title h2 { margin:0; font-size:24px; font-weight:400; }.section-title a { color:var(--blue); font-size:13px; }
+      .cards { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; }.card { background:#fff; border-radius:4px; min-width:0; overflow:hidden; box-shadow:0 1px 1px #00000008; transition:transform .2s, box-shadow .2s; }.card:hover { transform:translateY(-4px); box-shadow:0 7px 16px #0000001d; }.product-image { height:180px; display:grid; place-items:center; background:linear-gradient(135deg,#fafafa,#f0f0f0); font-size:68px; }.card-info { border-top:1px solid #eee; padding:14px; min-height:105px; }.price { font-size:19px; }.discount { color:#00a650; font-size:12px; margin-left:5px; }.ship { color:#00a650; text-transform:uppercase; font-size:10px; font-weight:700; margin-top:8px; }.name { color:#666; font-size:12px; margin-top:8px; line-height:1.3; }
+      .categories { display:grid; grid-template-columns:repeat(6,1fr); border-radius:4px; overflow:hidden; }.category { background:#fff; padding:23px 12px; text-align:center; border-right:1px solid #eee; min-height:132px; }.category:last-child{ border:0; }.category .cat-icon { display:grid;place-items:center; width:46px;height:46px;border-radius:50%;margin:0 auto 10px;background:#fff5c7;color:#6e5d00;font-size:23px; }.category span { font-size:12px; }
+      footer { margin-top:38px; padding:35px 0 50px; text-align:center; background:#fff; border-top:1px solid #ddd; color:#777; font-size:11px; }.footer-links { display:flex; justify-content:center; flex-wrap:wrap; gap:18px; color:#444; margin-bottom:18px; }
+      @media (max-width:800px) { .wrap{width:min(100% - 24px,600px)} .top{min-height:132px}.head{grid-template-columns:1fr auto;grid-template-rows:54px 38px 35px;gap:0 12px}.brand{grid-column:1;grid-row:1; font-size:0}.brand-mark{margin-left:2px}.search{grid-column:1/3;grid-row:2}.shipping{grid-column:2;grid-row:1;font-size:0}.shipping b{font-size:12px}.location{grid-column:1;grid-row:3}.nav{grid-column:1/3;grid-row:3;justify-content:flex-end}.nav-left{display:none}.nav-right{gap:13px;font-size:11px}.hero{height:330px}.hero-copy{width:75%}h1{font-size:36px}.deal-card{right:-46px; opacity:.65; transform:scale(.75) rotate(-4deg)}.benefits{height:auto;grid-template-columns:1fr;margin-top:0}.benefit{padding:18px;border-right:0;border-bottom:1px solid var(--line)}.cards{grid-template-columns:repeat(2,1fr)}.cards .card:nth-child(n+5){display:none}.product-image{height:155px}.categories{grid-template-columns:repeat(3,1fr)}.category{border-bottom:1px solid #eee}.section{padding-top:30px} }
+    </style>
+  </head>
+  <body>
+    <header class="top"><div class="wrap head">
+      <a class="brand" href="#"><span class="brand-mark"></span><span>mercado libre</span></a>
+      <form class="search"><input aria-label="Buscar productos" placeholder="Buscar productos, marcas y más…" /><button aria-label="Buscar" type="button">⌕</button></form>
+      <a class="shipping" href="#"><b>⚡</b><span>Envío gratis desde $ 90.000</span></a>
+      <a class="location" href="#"><span class="pin"></span><span>Enviar a<br><b>Bogotá 110111</b></span></a>
+      <nav class="nav"><div class="nav-left"><a class="drop" href="#">Categorías</a><a href="#">Ofertas</a><a href="#">Historial</a><a href="#">Supermercado</a><a href="#">Moda</a></div><div class="nav-right"><a href="#">Crea tu cuenta</a><a href="#">Ingresa</a><a href="#">Mis compras</a><a href="#">🛒</a></div></nav>
+    </div></header>
+    <main>
+      <section class="hero"><div class="wrap hero-inner"><div class="hero-copy"><div class="eyebrow">Hasta 40% OFF</div><h1>Ofertas que te van a encantar</h1><p>Encuentra eso que buscas y recíbelo donde quieras.</p><a class="cta" href="#ofertas">Ver ofertas</a></div><div class="deal-card"><small>OFERTA ESPECIAL</small><div class="product">🎧</div><div><strong>Hasta 40% OFF</strong><span>ENVÍO GRATIS</span></div></div></div></section>
+      <div class="wrap benefits"><div class="benefit"><i>⚡</i><div><b>Envío gratis</b><span>En millones de productos desde $ 90.000</span></div></div><div class="benefit"><i>↺</i><div><b>Devolución gratis</b><span>Tienes 30 días desde que lo recibes</span></div></div><div class="benefit"><i>♙</i><div><b>Compra protegida</b><span>Recibe el producto que esperabas o te devolvemos tu dinero</span></div></div></div>
+      <section class="wrap section" id="ofertas"><div class="section-title"><h2>Ofertas</h2><a href="#">Ver todas</a></div><div class="cards">
+        <article class="card"><div class="product-image">📱</div><div class="card-info"><span class="price">$ 899.900</span><span class="discount">32% OFF</span><div class="ship">Envío gratis</div><div class="name">Smartphone 128 GB</div></div></article>
+        <article class="card"><div class="product-image">👟</div><div class="card-info"><span class="price">$ 189.900</span><span class="discount">25% OFF</span><div class="ship">Envío gratis</div><div class="name">Tenis deportivos unisex</div></div></article>
+        <article class="card"><div class="product-image">⌚</div><div class="card-info"><span class="price">$ 249.900</span><span class="discount">18% OFF</span><div class="ship">Envío gratis</div><div class="name">Reloj inteligente</div></div></article>
+        <article class="card"><div class="product-image">🎮</div><div class="card-info"><span class="price">$ 1.399.900</span><span class="discount">20% OFF</span><div class="ship">Envío gratis</div><div class="name">Consola de videojuegos</div></div></article>
+        <article class="card"><div class="product-image">☕</div><div class="card-info"><span class="price">$ 329.900</span><span class="discount">15% OFF</span><div class="ship">Envío gratis</div><div class="name">Cafetera compacta</div></div></article>
+      </div></section>
+      <section class="wrap section"><div class="section-title"><h2>Compra por categoría</h2></div><div class="categories"><a class="category" href="#"><div class="cat-icon">⌂</div><span>Hogar y muebles</span></a><a class="category" href="#"><div class="cat-icon">♧</div><span>Electrónica</span></a><a class="category" href="#"><div class="cat-icon">♟</div><span>Moda</span></a><a class="category" href="#"><div class="cat-icon">🚗</div><span>Autos y motos</span></a><a class="category" href="#"><div class="cat-icon">✚</div><span>Salud y belleza</span></a><a class="category" href="#"><div class="cat-icon">⚽</div><span>Deportes</span></a></div></section>
+    </main>
+    <footer><div class="footer-links"><a href="#">Trabaja con nosotros</a><a href="#">Términos y condiciones</a><a href="#">Cómo cuidamos tu privacidad</a><a href="#">Ayuda</a></div><div>Copyright © 1999-2026 Mercado Libre Colombia LTDA.</div></footer>
+  </body>
+</html>

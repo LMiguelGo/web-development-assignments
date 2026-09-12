@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mercado Libre: comprá y vendé productos en línea. Envío gratis en millones de productos." />
+  <title>Mercado Libre Argentina - Envíos Gratis en el día</title>
+  <link rel="icon" href="images/mercado-libre-logo.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido principal</a>
+
+  <header class="header">
+    <div class="header__inner">
+      <div class="header__top">
+        <a href="#" class="header__logo" aria-label="Mercado Libre - Inicio">
+          <img src="images/mercado-libre-wordmark.svg" alt="Mercado Libre" width="134" height="34" />
+        </a>
+
+        <form class="search" role="search" action="#">
+          <label for="search-input" class="sr-only">Buscar productos, marcas y más</label>
+          <input id="search-input" class="search__input" type="search" name="q" placeholder="Buscar productos, marcas y más…" />
+          <button class="search__button" type="submit" aria-label="Buscar">
+            <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M13 13l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </button>
+        </form>
+
+        <a href="#ofertas" class="header__promo">
+          <span class="header__promo-tag">Nuevo</span>
+          <span>Semana de la Tecnología · hasta <strong>40% OFF</strong></span>
+        </a>
+      </div>
+
+      <div class="header__bottom">
+        <a href="#" class="header__location">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          <span class="header__location-text">
+            <small>Enviar a</small>
+            <strong>Capital Federal</strong>
+          </span>
+        </a>
+
+        <nav class="nav" aria-label="Navegación principal">
+          <ul class="nav__list">
+            <li class="nav__item nav__item--dropdown">
+              <a href="#" class="nav__link">Categorías <span class="nav__chevron" aria-hidden="true"></span></a>
+              <ul class="nav__dropdown">
+                <li><a href="#">Vehículos</a></li>
+                <li><a href="#">Supermercado</a></li>
+                <li><a href="#">Tecnología</a></li>
+                <li><a href="#">Hogar y Muebles</a></li>
+                <li><a href="#">Electrodomésticos</a></li>
+                <li><a href="#">Herramientas</a></li>
+                <li><a href="#">Construcción</a></li>
+                <li><a href="#">Deportes y Fitness</a></li>
+                <li><a href="#">Accesorios para Vehículos</a></li>
+                <li><a href="#">Moda</a></li>
+                <li><a href="#">Juegos y Juguetes</a></li>
+                <li><a href="#">Bebés</a></li>
+                <li><a href="#">Belleza y Cuidado Personal</a></li>
+                <li><a href="#">Salud y Equipamiento Médico</a></li>
+                <li><a href="#">Inmuebles</a></li>
+                <li><a href="#">Ver más categorías</a></li>
+              </ul>
+            </li>
+            <li class="nav__item"><a href="#" class="nav__link">Ofertas</a></li>
+            <li class="nav__item"><a href="#" class="nav__link">Cupones</a></li>
+            <li class="nav__item"><a href="#" class="nav__link">Supermercado</a></li>
+            <li class="nav__item"><a href="#" class="nav__link">Moda</a></li>
+            <li class="nav__item"><a href="#" class="nav__link">Mercado Play <span class="nav__badge">Gratis</span></a></li>
+            <li class="nav__item"><a href="#" class="nav__link">Vender</a></li>
+            <li class="nav__item"><a href="#" class="nav__link">Ayuda</a></li>
+          </ul>
+        </nav>
+
+        <ul class="user-menu">
+          <li><a href="#">Creá tu cuenta</a></li>
+          <li><a href="#">Ingresá</a></li>
+          <li><a href="#">Mis compras</a></li>
+          <li>
+            <a href="#" class="user-menu__cart" aria-label="Carrito de compras">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M3 4h2l2.4 10.5a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.8L20 8H6.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="19" r="1.4" fill="currentColor"/><circle cx="16.5" cy="19" r="1.4" fill="currentColor"/></svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero carousel (CSS scroll-snap, no JS) -->
+    <section class="hero" aria-label="Promociones destacadas">
+      <div class="hero__track">
+        <article class="hero__slide hero__slide--blue">
+          <div class="hero__content">
+            <p class="hero__eyebrow">Semana de la Tecnología</p>
+            <h2 class="hero__title">Hasta 40% OFF<br />y 12 cuotas sin interés</h2>
+            <a href="#ofertas" class="btn btn--primary">Ver ofertas</a>
+          </div>
+          <img class="hero__img" src="images/banner-tech.png" alt="Smartphone, auriculares, notebook y smartwatch flotando sobre fondo azul" />
+        </article>
+        <article class="hero__slide hero__slide--light">
+          <div class="hero__content">
+            <p class="hero__eyebrow">Envíos gratis</p>
+            <h2 class="hero__title">En millones de productos<br />desde $ 30.000</h2>
+            <a href="#categorias" class="btn btn--primary">Explorar</a>
+          </div>
+          <img class="hero__img" src="images/product-sneakers.png" alt="Zapatillas deportivas blancas con detalles azules" />
+        </article>
+      </div>
+      <div class="hero__dots" aria-hidden="true"><span></span><span></span></div>
+      <div class="hero__fade"></div>
+    </section>
+
+    <div class="container">
+      <!-- Benefits row -->
+      <section class="benefits" aria-label="Beneficios">
+        <a href="#" class="benefit">
+          <span class="benefit__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="28" height="28"><rect x="2" y="6" width="20" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2 10h20" stroke="currentColor" stroke-width="1.6"/></svg>
+          </span>
+          <span class="benefit__text"><strong>Ingresá a tu cuenta</strong><small>Disfrutá de ofertas y comprá sin límites.</small></span>
+          <span class="benefit__cta">Ingresá a tu cuenta</span>
+        </a>
+        <a href="#" class="benefit">
+          <span class="benefit__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="28" height="28"><path d="M4 8l8-4 8 4v8l-8 4-8-4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M4 8l8 4 8-4M12 12v8" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          </span>
+          <span class="benefit__text"><strong>Ingresá tu ubicación</strong><small>Consultá costos y tiempos de entrega.</small></span>
+          <span class="benefit__cta">Ingresar ubicación</span>
+        </a>
+        <a href="#" class="benefit">
+          <span class="benefit__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="28" height="28"><path d="M12 2l3 7 7 .6-5.3 4.7L18.4 22 12 18l-6.4 4 1.7-7.7L2 9.6 9 9z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="benefit__text"><strong>Medios de pago</strong><small>Pagá tus compras de forma rápida y segura.</small></span>
+          <span class="benefit__cta">Conocer medios de pago</span>
+        </a>
+      </section>
+
+      <!-- Offers -->
+      <section class="section" id="ofertas" aria-labelledby="ofertas-title">
+        <div class="section__head">
+          <h2 id="ofertas-title" class="section__title">Ofertas del día</h2>
+          <a href="#" class="section__link">Ver todas las ofertas</a>
+        </div>
+        <div class="products">
+          <article class="product">
+            <a href="#" class="product__link">
+              <span class="product__badge">Más vendido</span>
+              <img class="product__img" src="images/product-headphones.png" alt="Auriculares inalámbricos negros over-ear" loading="lazy" />
+              <div class="product__body">
+                <p class="product__old">$ 189.999</p>
+                <p class="product__price">$ 132.999 <span class="product__discount">30% OFF</span></p>
+                <p class="product__installments">6 cuotas de $ 22.166 sin interés</p>
+                <p class="product__shipping">Envío gratis <span class="full">⚡ FULL</span></p>
+                <h3 class="product__title">Auriculares Bluetooth Sony WH-CH720N Noise Cancelling</h3>
+              </div>
+            </a>
+          </article>
+          <article class="product">
+            <a href="#" class="product__link">
+              <img class="product__img" src="images/product-phone.png" alt="Smartphone azul con triple cámara" loading="lazy" />
+              <div class="product__body">
+                <p class="product__old">$ 1.299.999</p>
+                <p class="product__price">$ 999.999 <span class="product__discount">23% OFF</span></p>
+                <p class="product__installments">12 cuotas de $ 83.333 sin interés</p>
+                <p class="product__shipping">Envío gratis <span class="full">⚡ FULL</span></p>
+                <h3 class="product__title">Samsung Galaxy S24 5G 256 GB Azul 8 GB RAM</h3>
+              </div>
+            </a>
+          </article>
+          <article class="product">
+            <a href="#" class="product__link">
+              <img class="product__img" src="images/product-tv.png" alt="Smart TV 55 pulgadas mostrando un paisaje" loading="lazy" />
+              <div class="product__body">
+                <p class="product__old">$ 899.999</p>
+                <p class="product__price">$ 649.999 <span class="product__discount">27% OFF</span></p>
+                <p class="product__installments">12 cuotas de $ 54.166 sin interés</p>
+                <p class="product__shipping">Envío gratis</p>
+                <h3 class="product__title">Smart TV Samsung 55" Crystal UHD 4K Tizen</h3>
+              </div>
+            </a>
+          </article>
+          <article class="product">
+            <a href="#" class="product__link">
+              <span class="product__badge">Oferta relámpago</span>
+              <img class="product__img" src="images/product-airfryer.png" alt="Freidora de aire digital negra" loading="lazy" />
+              <div class="product__body">
+                <p class="product__old">$ 159.999</p>
+                <p class="product__price">$ 95.999 <span class="product__discount">40% OFF</span></p>
+                <p class="product__installments">6 cuotas de $ 15.999 sin interés</p>
+                <p class="product__shipping">Envío gratis <span class="full">⚡ FULL</span></p>
+                <h3 class="product__title">Freidora de Aire Digital Philco 5.5 L 1700 W</h3>
+              </div>
+            </a>
+          </article>
+          <article class="product">
+            <a href="#" class="product__link">
+              <img class="product__img" src="images/product-laptop.png" alt="Notebook plateada abierta" loading="lazy" />
+              <div class="product__body">
+                <p class="product__old">$ 1.599.999</p>
+                <p class="product__price">$ 1.249.999 <span class="product__discount">21% OFF</span></p>
+                <p class="product__installments">18 cuotas de $ 69.444 sin interés</p>
+                <p class="product__shipping">Envío gratis</p>
+                <h3 class="product__title">Notebook Lenovo IdeaPad 3 15.6" Ryzen 5 16 GB 512 GB SSD</h3>
+              </div>
+            </a>
+          </article>
+          <article class="product">
+            <a href="#" class="product__link">
+              <img class="product__img" src="images/product-watch.png" alt="Smartwatch negro con pantalla colorida" loading="lazy" />
+              <div class="product__body">
+                <p class="product__old">$ 249.999</p>
+                <p class="product__price">$ 174.999 <span class="product__discount">30% OFF</span></p>
+                <p class="product__installments">6 cuotas de $ 29.166 sin interés</p>
+                <p class="product__shipping">Envío gratis <span class="full">⚡ FULL</span></p>
+                <h3 class="product__title">Smartwatch Xiaomi Watch S3 Negro 1.43" AMOLED</h3>
+              </div>
+            </a>
+          </article>
+          <article class="product">
+            <a href="#" class="product__link">
+              <img class="product__img" src="images/product-blender.png" alt="Licuadora roja con jarra de vidrio" loading="lazy" />
+              <div class="product__body">
+                <p class="product__old">$ 89.999</p>
+                <p class="product__price">$ 62.999 <span class="product__discount">30% OFF</span></p>
+                <p class="product__installments">3 cuotas de $ 20.999 sin interés</p>
+                <p class="product__shipping">Envío gratis</p>
+                <h3 class="product__title">Licuadora Oster Clásica 1.25 L Jarra de Vidrio Roja</h3>
+              </div>
+            </a>
+          </article>
+          <article class="product">
+            <a href="#" class="product__link">
+              <img class="product__img" src="images/product-sneakers.png" alt="Zapatillas deportivas blancas" loading="lazy" />
+              <div class="product__body">
+                <p class="product__old">$ 149.999</p>
+                <p class="product__price">$ 104.999 <span class="product__discount">30% OFF</span></p>
+                <p class="product__installments">6 cuotas de $ 17.499 sin interés</p>
+                <p class="product__shipping">Envío gratis <span class="full">⚡ FULL</span></p>
+                <h3 class="product__title">Zapatillas Nike Revolution 7 Hombre Blancas</h3>
+              </div>
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <!-- Subscription banner -->
+      <section class="meli-plus" aria-label="Suscribite a Meli+">
+        <div class="meli-plus__left">
+          <span class="meli-plus__logo">meli<strong>+</strong></span>
+          <p>Suscribite y accedé a envíos gratis desde $ 15.000, Disney+, HBO Max y más beneficios.</p>
+        </div>
+        <a href="#" class="btn btn--dark">Suscribite por $ 4.990/mes</a>
+      </section>
+
+      <!-- Categories -->
+      <section class="section" id="categorias" aria-labelledby="categorias-title">
+        <div class="section__head">
+          <h2 id="categorias-title" class="section__title">Categorías populares</h2>
+        </div>
+        <div class="categories">
+          <a href="#" class="category"><img src="images/cat-supermercado.png" alt="" loading="lazy" /><span>Supermercado</span></a>
+          <a href="#" class="category"><img src="images/cat-moda.png" alt="" loading="lazy" /><span>Moda</span></a>
+          <a href="#" class="category"><img src="images/cat-hogar.png" alt="" loading="lazy" /><span>Hogar y Muebles</span></a>
+          <a href="#" class="category"><img src="images/cat-tecnologia.png" alt="" loading="lazy" /><span>Tecnología</span></a>
+          <a href="#" class="category"><img src="images/cat-deportes.png" alt="" loading="lazy" /><span>Deportes y Fitness</span></a>
+          <a href="#" class="category"><img src="images/cat-vehiculos.png" alt="" loading="lazy" /><span>Vehículos</span></a>
+        </div>
+      </section>
+
+      <!-- Payment / info cards -->
+      <section class="info-cards" aria-label="Más sobre Mercado Libre">
+        <article class="info-card">
+          <span class="info-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="40" height="40"><rect x="2" y="5" width="20" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 10h20M6 15h4" stroke="currentColor" stroke-width="1.5"/></svg>
+          </span>
+          <h3>Elegí cómo pagar</h3>
+          <p>Podés pagar con tarjeta, débito, efectivo o con Cuotas sin Tarjeta.</p>
+          <a href="#">Cómo pagar tus compras</a>
+        </article>
+        <article class="info-card">
+          <span class="info-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="40" height="40"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="7" cy="18" r="1.8" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17.5" cy="18" r="1.8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          </span>
+          <h3>Envío gratis desde $ 30.000</h3>
+          <p>Solo por estar registrado en Mercado Libre tenés envíos gratis en miles de productos.</p>
+          <a href="#">Cómo funcionan los envíos</a>
+        </article>
+        <article class="info-card">
+          <span class="info-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="40" height="40"><path d="M12 2l8 3v6c0 5-3.5 9.2-8 11-4.5-1.8-8-6-8-11V5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M8.5 12l2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <h3>Seguridad, de principio a fin</h3>
+          <p>¿No te gusta? ¡Devolvelo! En Mercado Libre, no hay nada que no puedas hacer, porque estás siempre protegido.</p>
+          <a href="#">Cómo te protegemos</a>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top container">
+      <ul class="footer__links">
+        <li><a href="#">Trabajá con nosotros</a></li>
+        <li><a href="#">Términos y condiciones</a></li>
+        <li><a href="#">Promociones</a></li>
+        <li><a href="#">Cómo cuidamos tu privacidad</a></li>
+        <li><a href="#">Accesibilidad</a></li>
+        <li><a href="#">Información al usuario financiero</a></li>
+        <li><a href="#">Ayuda</a></li>
+        <li><a href="#">Defensa del Consumidor</a></li>
+        <li><a href="#">Información sobre seguros</a></li>
+        <li><a href="#">Libro de quejas online</a></li>
+        <li><a href="#">Programa de Afiliados</a></li>
+      </ul>
+      <p class="footer__legal">Copyright © 1999-2026 MercadoLibre S.R.L.<br />Av. Caseros 3039, Piso 2, CP 1264, Parque Patricios, CABA</p>
+    </div>
+  </footer>
+</body>
+</html>

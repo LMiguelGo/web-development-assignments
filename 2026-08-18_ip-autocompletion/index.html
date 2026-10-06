@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autocompletado y Validación de Direcciones IP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="background-glow"></div>
+  
+  <main class="container">
+    <header class="header">
+      <div class="badge">Electiva: Desarrollo de Aplicaciones Web</div>
+      <h1>Validador y Autocompletado de Direcciones IP</h1>
+      <p class="subtitle">
+        Ingreso asistido con puntuación automática en tiempo real y verificación de formato según estándares de red.
+      </p>
+    </header>
+
+    <div class="card">
+      <!-- Selector de Modo: IPv6 / IPv4 -->
+      <div class="protocol-tabs" role="tablist" aria-label="Seleccionar protocolo IP">
+        <button type="button" class="tab-btn active" id="tab-ipv6" role="tab" aria-selected="true" data-mode="ipv6">
+          <span class="tab-indicator"></span>
+          <strong>IPv6</strong> (8 bloques hexadecimales)
+        </button>
+        <button type="button" class="tab-btn" id="tab-ipv4" role="tab" aria-selected="false" data-mode="ipv4">
+          <span class="tab-indicator"></span>
+          <strong>IPv4</strong> (4 octetos decimales)
+        </button>
+      </div>
+
+      <!-- Configuración del separador -->
+      <div class="settings-bar">
+        <div class="setting-group" id="separator-options">
+          <label for="separator-select" class="setting-label">Separador automático:</label>
+          <select id="separator-select" class="select-input">
+            <option value=":" selected>: (Dos puntos - Estándar RFC IPv6)</option>
+            <option value=".">. (Punto)</option>
+          </select>
+        </div>
+        <div class="setting-toggle">
+          <label class="switch-label">
+            <input type="checkbox" id="auto-format-toggle" checked>
+            <span class="slider"></span>
+            <span class="switch-text">Puntuación automática</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Formulario con Campo de Texto Principal -->
+      <div class="input-section">
+        <label for="ip-input" class="input-label" id="field-label">
+          Dirección IPv6
+          <span class="hint-badge" id="format-hint">Formato: xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx</span>
+        </label>
+        
+        <div class="input-wrapper" id="input-wrapper">
+          <span class="input-icon" id="status-icon" aria-hidden="true">🌐</span>
+          <input 
+            type="text" 
+            id="ip-input" 
+            class="ip-input-field" 
+            placeholder="Ej: 2001:0db8:85a3:0000:0000:8a2e:0370:7334"
+            autocomplete="off" 
+            spellcheck="false"
+            aria-describedby="status-message"
+            autofocus
+          >
+          <div class="input-actions">
+            <button type="button" id="btn-clear" class="icon-btn" title="Limpiar campo" aria-label="Limpiar campo">
+              ✕
+            </button>
+            <button type="button" id="btn-copy" class="icon-btn" title="Copiar al portapapeles" aria-label="Copiar dirección">
+              📋
+            </button>
+          </div>
+        </div>
+
+        <!-- Aviso de Validación: Letras rojas si no cumple, verdes si sí cumple -->
+        <div id="status-message" class="status-message neutral" role="alert" aria-live="polite">
+          <span class="status-icon-dot"></span>
+          <span class="status-text">Ingresa una dirección IP para comenzar la validación.</span>
+        </div>
+      </div>
+
+      <!-- Métricas e Información de la Dirección -->
+      <section class="info-grid" aria-label="Detalles técnicos de la dirección">
+        <div class="info-card">
+          <span class="info-title">Bloques Detectados</span>
+          <span class="info-value" id="blocks-count">0 / 8</span>
+          <span class="info-sub" id="blocks-detail">Esperando entrada...</span>
+        </div>
+
+        <div class="info-card">
+          <span class="info-title">Compresión de Ceros (::)</span>
+          <span class="info-value" id="compression-status">No detectada</span>
+          <span class="info-sub" id="compression-detail">Válida una sola vez</span>
+        </div>
+
+        <div class="info-card">
+          <span class="info-title">Tipo de Dirección</span>
+          <span class="info-value" id="ip-type">No clasificada</span>
+          <span class="info-sub" id="ip-type-detail">Escribe una dirección válida</span>
+        </div>
+      </section>
+
+      <!-- Chips de Prueba Rápida -->
+      <div class="examples-section">
+        <span class="examples-title">Probar ejemplos rápidos:</span>
+        <div class="examples-group">
+          <span class="examples-label">Válidos:</span>
+          <div class="chips-row" id="valid-examples">
+            <button type="button" class="chip chip-valid" data-ip="2001:0db8:85a3:0000:0000:8a2e:0370:7334">Completa</button>
+            <button type="button" class="chip chip-valid" data-ip="2001:db8::1">Comprimida</button>
+            <button type="button" class="chip chip-valid" data-ip="fe80::1ff:fe23:4567:890a">Link-Local</button>
+            <button type="button" class="chip chip-valid" data-ip="::1">Loopback (::1)</button>
+          </div>
+        </div>
+
+        <div class="examples-group">
+          <span class="examples-label">Inválidos (para comprobar aviso rojo):</span>
+          <div class="chips-row" id="invalid-examples">
+            <button type="button" class="chip chip-invalid" data-ip="2001:0db8:85a3:0000:0000:8a2e:0370:7334:1111">9 Bloques (+ de 8)</button>
+            <button type="button" class="chip chip-invalid" data-ip="2001:xyz::1">Carácter no Hex (xyz)</button>
+            <button type="button" class="chip chip-invalid" data-ip="2001::db8::1">Doble compresión (::...::)</button>
+            <button type="button" class="chip chip-invalid" data-ip="12345::1">Bloque con 5 dígitos</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Guía y Referencia Técnica -->
+    <footer class="footer-info">
+      <div class="rules-card">
+        <h3>Reglas de Formato IPv6 (RFC 4291 / RFC 5952):</h3>
+        <ul>
+          <li>Consta de <strong>8 grupos</strong> (hextetos) de 1 a 4 dígitos hexadecimales (0-9, a-f, A-F).</li>
+          <li>Los grupos se separan formalmente por dos puntos (<code>:</code>).</li>
+          <li>Se permite comprimir una única secuencia contigua de ceros usando <code>::</code>.</li>
+          <li>Al escribir en este campo, se inserta automáticamente el separador al completar cada grupo de 4 caracteres o al presionar punto/dos puntos.</li>
+        </ul>
+      </div>
+
+      <p class="author-credits">
+        Desarrollado para <strong>Electiva: Desarrollo de Aplicaciones Web</strong> (2026-2)<br>
+        Universidad del Cauca — Facultad de Ingeniería Electrónica y Telecomunicaciones
+      </p>
+    </footer>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
